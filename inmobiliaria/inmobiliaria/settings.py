@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'apps.propiedad', 
     'apps.oferta',
     'apps.persona',
-    'apps.alquiler'
+    'apps.alquiler',
 ]
 
 MIDDLEWARE = [
