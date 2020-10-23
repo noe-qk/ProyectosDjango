@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',  #Agregando mis aplicaciones
     'apps.propiedad', 
-    'apps.oferta',
     'apps.persona',
     'apps.alquiler',
 ]
