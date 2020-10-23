@@ -9,13 +9,32 @@ from django.db import models
 
 
 #Indica el estado de la propiedad 'Construccion' 'Ampliacion' 'Remodelacion'
-class Estado(models.Model):
-    cod_estado = models.IntegerField(primary_key=True)
-    descrip_estado = models.CharField(max_length=15, blank=True, null=True)
+
+
+class Propiedad(models.Model):
+    cod_propiedad = models.IntegerField(primary_key=True)
+    tipo_propiedad = models.IntegerField(blank=True, null=True)
+    mtrs2_cubiertos = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    mtrs2_semicubiertos = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    capacidad = models.IntegerField(blank=True, null=True)
+    cant_banios = models.IntegerField(blank=True, null=True)
+    cant_ambientes = models.IntegerField(blank=True, null=True)
+    permite_cancelacion = models.CharField(max_length=2, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'estado'
+        db_table = 'propiedad'
+
+#Tipo Propiedad
+class TipoPropiedad(models.Model):
+    tipo_propiedad = models.IntegerField(primary_key=True)
+    descrip_tipo_propiedad = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'tipo_propiedad'
+
+
 
 
 #Tipo de Propiedad Casa
@@ -50,41 +69,15 @@ class PropHabitacion(models.Model):
         db_table = 'prop_habitacion'
 
 
-class Propiedad(models.Model):
-    cod_propiedad = models.IntegerField(primary_key=True)
-    tipo_propiedad = models.IntegerField(blank=True, null=True)
-    mtrs2_cubiertos = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
-    mtrs2_semicubiertos = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
-    capacidad = models.IntegerField(blank=True, null=True)
-    cant_banios = models.IntegerField(blank=True, null=True)
-    cant_ambientes = models.IntegerField(blank=True, null=True)
-    permite_cancelacion = models.CharField(max_length=2, blank=True, null=True)
+
+class Estado(models.Model):
+    cod_estado = models.IntegerField(primary_key=True)
+    descrip_estado = models.CharField(max_length=15, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'propiedad'
+        db_table = 'estado'
 
-
-
-
-
-class TelefonoPersona(models.Model):
-    cod_persona = models.IntegerField(primary_key=True)
-    telefono_persona = models.CharField(max_length=15)
-
-    class Meta:
-        managed = False
-        db_table = 'telefono_persona'
-        unique_together = (('cod_persona', 'telefono_persona'),)
-
-
-class TipoPropiedad(models.Model):
-    tipo_propiedad = models.IntegerField(primary_key=True)
-    descrip_tipo_propiedad = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'tipo_propiedad'
 
 
 class Zona(models.Model):

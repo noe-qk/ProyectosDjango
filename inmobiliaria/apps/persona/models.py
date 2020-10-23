@@ -30,3 +30,13 @@ class PropietarioPropiedad(models.Model):
         managed = False
         db_table = 'propietario_propiedad'
         unique_together = (('cod_propiedad', 'cod_persona'),)
+
+
+class TelefonoPersona(models.Model):
+    cod_persona = models.IntegerField(primary_key=True)
+    telefono_persona = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = 'telefono_persona'
+        unique_together = (('cod_persona', 'telefono_persona'),)
